@@ -1,5 +1,7 @@
 # LabWired
 
+**We make hardware easy.**
+
 LabWired lets you build and test embedded systems without waiting on hardware. Lay out a board and
 its parts in the browser, write and compile the firmware, and run it on a register-accurate
 simulation of the chip. The simulation is deterministic, so the same firmware behaves the same way
