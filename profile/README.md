@@ -1,17 +1,26 @@
 # LabWired
 
-LabWired is a platform for building and testing embedded systems without waiting on hardware. You can
-lay out a board and its parts in the browser, write and compile the firmware, and run it on a
-register-accurate simulation of the chip. The simulation is deterministic, so the same firmware
-behaves the same way every time. You can gate CI on the result, or run the same binary on a real
-board over WebUSB-JTAG.
+LabWired lets you build and test embedded systems without waiting on hardware. Lay out a board and
+its parts in the browser, write and compile the firmware, and run it on a register-accurate
+simulation of the chip. The simulation is deterministic, so the same firmware behaves the same way
+every time.
 
-It works for people and for AI agents. People use the Playground and the Studio IDE, plus a VS Code
-extension. Agents drive the same tools over MCP: connect Claude Code or Codex, or use the LabWired
-agent, which comes preconfigured and can run on a local model with no internet.
+## Who it's for
 
-The core of it is the oracle. It runs firmware and reports whether it actually worked, so a result is
-a real pass or fail instead of a guess from reading the code.
+**Makers.** Design a board in the Playground, drop in parts, wire it up, and watch the firmware run
+in your browser. Free to try, nothing to buy first.
+
+**Teams.** Gate CI and real hardware on register-accurate behaviour, catch firmware bugs before a
+board is on the desk, and drive the whole thing from your own agent or ours, on-prem if you need it.
+
+Both run on the same simulation underneath, so a result is a real pass or fail, not a guess from
+reading the code. When you're ready, the same binary runs on a real board over WebUSB-JTAG.
+
+## Works with agents
+
+People use the Playground and the Studio IDE, plus a VS Code extension. Agents drive the same tools
+over MCP: connect Claude Code or Codex, or use the LabWired agent, which comes preconfigured and can
+run on a local model with no internet.
 
 labwired.com · app.labwired.com
 
