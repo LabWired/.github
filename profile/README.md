@@ -1,22 +1,27 @@
 # LabWired
 
-LabWired is a simulator for embedded firmware. You give it a compiled binary, it runs on a
-register-accurate model of the chip, and it tells you whether the firmware did what you said it
-should. Runs are deterministic, so you get the same result every time, whether you run it locally,
-in CI, or against a board on your desk.
+LabWired is a platform for building and testing embedded systems without waiting on hardware. You can
+lay out a board and its parts in the browser, write and compile the firmware, and run it on a
+register-accurate simulation of the chip. The simulation is deterministic, so the same firmware
+behaves the same way every time. You can gate CI on the result, or run the same binary on a real
+board over WebUSB-JTAG.
 
-It's built to be driven by AI agents. The agent writes firmware and runs it here to find out if it
-works, instead of guessing from the source. Connect Claude Code or Codex to it over MCP, or use the
-LabWired agent, which comes preconfigured and can run against a local model with no internet.
+It works for people and for AI agents. People use the Playground and the Studio IDE, plus a VS Code
+extension. Agents drive the same tools over MCP: connect Claude Code or Codex, or use the LabWired
+agent, which comes preconfigured and can run on a local model with no internet.
+
+The core of it is the oracle. It runs firmware and reports whether it actually worked, so a result is
+a real pass or fail instead of a guess from reading the code.
 
 labwired.com · app.labwired.com
 
-## What it does
+## What's here
 
-- Runs are deterministic: the same binary gives the same result and the same trace every time, so tests don't flake.
-- A pass or fail comes from the simulator, not from the model saying it worked.
-- Output is structured: register values, pin state, and traces as JSON and VCD.
-- The same binary also runs on real hardware over WebUSB-JTAG.
+- **Design** — lay out boards, parts, and wiring in the browser Playground.
+- **Build** — write firmware in Studio or VS Code and compile it hosted (PlatformIO, Zephyr).
+- **Run and verify** — run on the deterministic simulator and check behaviour against what you specified.
+- **CI and hardware** — gate merges on a simulation run, and run the same binary on a real board.
+- **Agents** — an MCP interface, ready-made skills, and a preconfigured agent.
 
 ## Repos
 
