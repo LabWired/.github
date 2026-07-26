@@ -1,34 +1,28 @@
 # LabWired
 
-**Every AI can write firmware now. LabWired is the layer that proves it runs** — the same binary in
-sim, on the bench, and in CI, byte-exact. Our client isn't human anymore; it's an agent.
+LabWired is a simulator for embedded firmware. You give it a compiled binary, it runs on a
+register-accurate model of the chip, and it tells you whether the firmware did what you said it
+should. Runs are deterministic, so you get the same result every time, whether you run it locally,
+in CI, or against a board on your desk.
 
-Generation is commoditizing; trustworthy **verification** is the bottleneck. LabWired is the
-deterministic gate every firmware agent passes through: the agent **proposes** a build, the oracle
-**disposes** — a pass/fail verdict it cannot fake. No "the AI says it works."
+It's built to be driven by AI agents. The agent writes firmware and runs it here to find out if it
+works, instead of guessing from the source. Connect Claude Code or Codex to it over MCP, or use the
+LabWired agent, which comes preconfigured and can run against a local model with no internet.
 
-Run embedded firmware against deterministic, register-level silicon twins — no board on the desk.
-Same input, same result every run, so an agent can debug, write drivers, and trust its own
-build → run → **verify** loop without a HIL rig or flashing delays. Humans step in through Studio and
-VS Code to check the work.
+labwired.com · app.labwired.com
 
-**Bring your own agent** — Claude Code / Codex over MCP — **or use ours**, the LabWired agent
-(opencode wired to the oracle; local-model & air-gap ready).
+## What it does
 
-[labwired.com](https://labwired.com) · [app.labwired.com](https://app.labwired.com)
-
-## Built for agents
-
-- **Deterministic execution** — bit-accurate, identical `result.json` and `trace.vcd` every run. No flakes to reason around.
-- **The oracle gates it** — a "verified" verdict is server-side and deterministic, never an LLM self-report. Only a real pass counts.
-- **Structured observability** — memory maps, pin state, and traces as JSON and VCD, not screens to scrape.
-- **Real-board parity** — the same binary runs in the sim and, via WebUSB-JTAG, on the bench.
+- Runs are deterministic: the same binary gives the same result and the same trace every time, so tests don't flake.
+- A pass or fail comes from the simulator, not from the model saying it worked.
+- Output is structured: register values, pin state, and traces as JSON and VCD.
+- The same binary also runs on real hardware over WebUSB-JTAG.
 
 ## Repos
 
 | Repo | What it is |
 |------|------------|
-| [agent](https://github.com/LabWired/agent) | The LabWired firmware agent — opencode wired to the oracle; local-model & air-gap ready |
-| [skills](https://github.com/LabWired/skills) | Agent Skills for firmware — starting with `firmware-verification`, the oracle gate |
-| [firmware-test](https://github.com/LabWired/firmware-test) | Run LabWired firmware simulation tests in GitHub Actions — no hardware, no toolchain |
-| [firmware-ci-starter](https://github.com/LabWired/firmware-ci-starter) | Template repo — firmware, test script, and CI; a passing simulation run on your first push |
+| [agent](https://github.com/LabWired/agent) | The LabWired agent: opencode preconfigured for firmware, runs on a local model offline |
+| [skills](https://github.com/LabWired/skills) | Agent skills for firmware work, starting with `firmware-verification` |
+| [firmware-test](https://github.com/LabWired/firmware-test) | Run LabWired simulation tests in GitHub Actions, no hardware or toolchain needed |
+| [firmware-ci-starter](https://github.com/LabWired/firmware-ci-starter) | Template repo with firmware, a test script, and CI wired up |
